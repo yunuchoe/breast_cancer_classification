@@ -29,40 +29,12 @@ yte = Dte(31,:);
 D = [Xtr; ytr];
 w_hat = zeros(31,1);
 
-% (i) mu = 0 and k = 10
+% let mu = 0 and k = 10
 mu = 0;
 k = 10;
 
-[ws1,fs1,k1] = grad_desc('f_wdbc', 'g_wdbc', w_hat, D, mu, k);
+[ws,fs,k] = grad_desc('f_wdbc', 'g_wdbc', w_hat, D, mu, k);
 
-% (ii) mu = 0.1 and k = 10
-mu = 0.1;
-k = 10;
-
-[ws2,fs2,k2] = grad_desc('f_wdbc', 'g_wdbc', w_hat, D, mu, k);
-
-% (iii) mu = 0 and k = 30
-mu = 0;
-k = 30;
-
-[ws3,fs3,k3] = grad_desc('f_wdbc', 'g_wdbc', w_hat, D, mu, k);
-
-% (iv) mu = 0.075 and k = 30
-mu = 0.075;
-k = 30;
-
-[ws4,fs4,k4] = grad_desc('f_wdbc', 'g_wdbc', w_hat, D, mu, k);
-
-
-
-fprintf("(i) \n")
-confusion_matrix(ws1, Xte, yte)
-
-fprintf("\n(ii) \n")
-confusion_matrix(ws2, Xte, yte)
-
-fprintf("\n(iii) \n")
-confusion_matrix(ws3, Xte, yte)
-
-fprintf("\n(iv) \n")
-confusion_matrix(ws4, Xte, yte)
+% results
+fprintf("Confusion matrix: \n")
+confusion_matrix(ws, Xte, yte)
