@@ -1,10 +1,5 @@
-% ECE 403 - Lab 3
+load("D_wdbc.mat")
 
-% 1. From the course website download data matrix D_wdbc.mat.
-%load("D_wdbc.mat")
-
-
-% 2. Follow Sec. 3.1 above to generate normalized training and test data sets and their labels.
 % get data sets
 Dtr = D_wdbc(:,1:285);
 Dte = D_wdbc(:,286:569);
@@ -31,21 +26,7 @@ end
 ytr = Dtr(31,:);
 yte = Dte(31,:);
 
-
-% 3. Based on (E3.2) and (E3.3), prepare two MATLAB functions for evaluating the regularized
-% cost function and its gradient, respectivel
-
-% prepared E3.2 in f_wdbc.m and E3.3 in g_wdbc.m - same equation structure
-% as in assignment 4
-
-
-% 4. Prepare MATLAB code to minimize E_LR(w_hat) in (E3.2) using the GD algorithm. The remarks
-% below are intended to assist to get this done smoothl
 D = [Xtr; ytr];
-
-
-% 5. Set initial point w_hat = 0 and run the code prepared in Item 4.4 to obtain parameters {w*, b*}
-% for the following settings:
 w_hat = zeros(31,1);
 
 % (i) mu = 0 and k = 10
@@ -73,12 +54,6 @@ k = 30;
 [ws4,fs4,k4] = grad_desc('f_wdbc', 'g_wdbc', w_hat, D, mu, k);
 
 
-% 6. Use the four solutions {w*, b* }
-% obtained from 5. above to specify the classifier in
-% (E3.4) and apply it to the 284 test samples prepared in Item 4.2 above. 
-% Report the confusion matrix for each case, and comment on the results obtained
-
-% encapsualted label and confusion matrix generation into sperate function
 
 fprintf("(i) \n")
 confusion_matrix(ws1, Xte, yte)
