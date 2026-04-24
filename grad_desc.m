@@ -1,5 +1,4 @@
-% To implement the gradient descent algorithm.
-% Example: [xs,fs,k] = grad_desc('f_rosen','g_rosen',[0; 2],1e-9);
+% gradient descent algorithm.
 
 function [xs,fs,k] = grad_desc(fname,gname,x0,D,mu,n) % n is k in main
 format compact
